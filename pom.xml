@@ -19,6 +19,7 @@
         <module>eureka-service</module>
         <module>calculator-service</module>
         <module>addition-service</module>
+        <module>config-service</module>
     </modules>
 
     <properties>

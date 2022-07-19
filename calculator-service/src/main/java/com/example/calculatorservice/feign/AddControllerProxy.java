@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(name = "addition-service")
 @RibbonClient(name = "addition-service")
 public interface AddControllerProxy {
+
     @GetMapping("/add")
     Number add(@RequestParam double a, @RequestParam double b);
 }
