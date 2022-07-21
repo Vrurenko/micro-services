@@ -9,9 +9,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.logging.Logger;
+
 @RestController
 @RefreshScope
 public class CalculatorController {
+    private static final Logger LOG = Logger.getLogger("CalculatorController");
+
     private final AddControllerProxy addControllerProxy;
 
     @Value("${driver}")
@@ -25,11 +29,12 @@ public class CalculatorController {
     @GetMapping("/add")
     @HystrixCommand(fallbackMethod = "defaultValue")
     public Number add(@RequestParam double a, @RequestParam double b) {
-        System.out.println("Calling with " + value);
+        LOG.info("I am adding numbers " + a + " and " + b);
         return addControllerProxy.add(a, b);
     }
 
     private Number defaultValue(double a, double b) {
+        LOG.info("I am actually adding numbers " + a + " and " + b);
         return 0;
     }
 }
