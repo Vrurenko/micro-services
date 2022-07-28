@@ -20,6 +20,7 @@
         <module>calculator-service</module>
         <module>addition-service</module>
         <module>config-service</module>
+        <module>gateway-service</module>
     </modules>
 
     <properties>
